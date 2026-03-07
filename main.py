@@ -1,7 +1,4 @@
 import flet as ft
+import View.InicioSesion as InicioSesion
 
-def main(page: ft.Page):
-    page.title = "Mi primera app"
-    page.add(ft.Text("Hola mundo"))
-
-ft.app(target=main)
+ft.run(InicioSesion.main)
