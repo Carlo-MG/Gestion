@@ -8,14 +8,12 @@ class form(ft.Container):
         super().__init__()
 
         self.bgcolor = var.color1
-        self.width = 400
-        self.height = 600
         self.padding = 30
         self.border_radius = 10
 
         self.content = ft.Column(
             controls=contenido,
-            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+            alignment=ft.MainAxisAlignment.SPACE_EVENLY,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
             spacing=50
         )

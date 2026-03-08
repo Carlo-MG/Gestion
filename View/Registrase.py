@@ -4,8 +4,7 @@ import Component.forms.form as form
 import Component.Button.buttonbsc as ButtonBsc
 
 
-def login_view(page: ft.Page):
-
+def main(page: ft.Page):
     page.title = "Dulceria"
 
     page.fonts = {
@@ -17,7 +16,7 @@ def login_view(page: ft.Page):
     page.theme = ft.Theme(font_family="Montserrat")
 
     return ft.View(
-        route="/login",
+        route="/register",
         controls=[
             ft.ResponsiveRow(
                 controls=[
@@ -26,8 +25,8 @@ def login_view(page: ft.Page):
                         bgcolor=var.color2,
                         alignment=ft.Alignment.CENTER,
                         content=ft.Container(
-                            width=page.width * 0.35,
-                            height=page.height * 0.8,
+                            width=page.width * 0.35,  # 🔹 tamaño relativo
+                            height=page.height * 0.8,  # 🔹 tamaño relativo
                             content=form.form([
                                 ft.Text(
                                     "DULCERIA",
@@ -42,27 +41,28 @@ def login_view(page: ft.Page):
                                     width=float("inf")
                                 ),
                                 ft.TextField(
+                                    label="Correo Electrónico",
+                                    label_style=ft.TextStyle(color=var.color5),
+                                    bgcolor=var.color2,
+                                    width=float("inf")
+                                ),
+                                ft.TextField(
                                     label="Contraseña",
                                     password=True,
                                     label_style=ft.TextStyle(color=var.color5),
                                     bgcolor=var.color2,
                                     width=float("inf")
                                 ),
-                                ft.Column(
-                                    controls=[
-                                        ButtonBsc.ButtonBsc(
-                                            "Iniciar Sesion",
-                                            color=var.color3,
-                                            fontcolor=var.color1
-                                        ),
-                                        ButtonBsc.ButtonBsc(
-                                            "Registrarse",
-                                            color=var.color1,
-                                            fontcolor=var.color5,
-                                            command=lambda _: page.go("/register")
-                                        )
-                                    ],
-                                    horizontal_alignment=ft.CrossAxisAlignment.CENTER
+                                ft.Container(
+                                    col=12,
+                                    bgcolor=var.color1,
+                                    alignment=ft.Alignment.CENTER,
+                                    content=ft.Column(
+                                        controls=[
+                                            ButtonBsc.ButtonBsc("Crear Cuenta", color=var.color3, fontcolor=var.color1),
+                                            ButtonBsc.ButtonBsc("Iniciar Sesión", color=var.color1, fontcolor=var.color5, command=lambda _: page.go("/login"))
+                                        ]
+                                    )
                                 )
                             ])
                         )
@@ -76,4 +76,5 @@ def login_view(page: ft.Page):
                 spacing=0
             )
         ]
+        
     )
